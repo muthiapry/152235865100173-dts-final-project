@@ -1,13 +1,51 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import PrivateComponent from "./components/PrivateComponent";
+import NoMatch from "./containers/NoMatch";
+import Login from "./containers/Login";
+import RecipeList from "./containers/RecipeList";
+import RecipeDetail from "./containers/RecipeDetail";
+import Register from "./containers/Register";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <PrivateComponent>
+              <App />
+            </PrivateComponent>
+          }
+        >
+          <Route path="/" element={<RecipeList />} />
+          <Route path="detail/:key" element={<RecipeDetail />} />
+        </Route>
+        <Route
+          path="login"
+          element={
+            <PrivateComponent loginOnly={false}>
+              <Login />
+            </PrivateComponent>
+          }
+        />
+        <Route
+          path="register"
+          element={
+            <PrivateComponent loginOnly={false}>
+              <Register />
+            </PrivateComponent>
+          }
+        />
+        <Route path="*" element={<NoMatch />} />
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>
 );
 

@@ -1,0 +1,7 @@
+.jumbotron {
+  background-image: url("../img/LoginImage.jpg");
+}
+
+.jumbotron::after {
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+}
