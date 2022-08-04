@@ -10,6 +10,7 @@ import Login from "./containers/Login";
 import RecipeList from "./containers/RecipeList";
 import RecipeDetail from "./containers/RecipeDetail";
 import Register from "./containers/Register";
+import ResultSearch from "./containers/ResultSearch";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -26,6 +27,7 @@ root.render(
         >
           <Route path="/" element={<RecipeList />} />
           <Route path="detail/:key" element={<RecipeDetail />} />
+          <Route path="results/:q" element={<ResultSearch />} />
         </Route>
         <Route
           path="login"

@@ -5,6 +5,7 @@ import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
 import * as React from "react";
 import Logo from "../img/cookbook.png";
+import { useNavigate } from "react-router-dom";
 import { Link, NavLink } from "react-router-dom";
 import { styled, alpha } from "@mui/material/styles";
 import UserLog from "./UserLog";
@@ -61,6 +62,12 @@ const navItems = [
 ];
 
 const Navbar = () => {
+  let navigate = useNavigate();
+
+  const onSearch = (key) => {
+    navigate(`/results/${key}`);
+    window.scrollTo(0, 0);
+  };
   return (
     <Box sx={{ display: "flex" }}>
       <AppBar>
@@ -105,6 +112,15 @@ const Navbar = () => {
               <SearchIcon />
             </SearchIconWrapper>
             <StyledInputBase
+              onKeyPress={(ev) => {
+                if (ev.key === "Enter") {
+                  ev.preventDefault();
+                  if (ev.target.value != "") {
+                    console.log(`Lagi cari ${ev.target.value}`);
+                    onSearch(ev.target.value);
+                  }
+                }
+              }}
               placeholder="Search…"
               inputProps={{ "aria-label": "search" }}
             />

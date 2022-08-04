@@ -13,7 +13,7 @@ import { useNavigate } from "react-router-dom";
 const RecipeRekomendasi = () => {
   let navigate = useNavigate();
 
-  const onClickMovie = (key) => {
+  const onClickRecipe = (key) => {
     navigate(`/detail/${key}`);
     window.scrollTo(0, 0);
   };
@@ -34,8 +34,8 @@ const RecipeRekomendasi = () => {
   }, []);
 
   return (
-    <Box sx={{ margin: 10 }}>
-      <Typography variant="h6" gutterBottom component="div">
+    <Box sx={{ padding: 3, mt: 4 }}>
+      <Typography variant="h6" gutterBottom component="div" sx={{ fontWeight: "bold" }}>
         Rekomendasi
       </Typography>
       <div className="container">
@@ -62,7 +62,7 @@ const RecipeRekomendasi = () => {
         >
           {recipes.map((recipe) => (
             <SwiperSlide id={recipe.id}>
-              <div className="imageContainer" onClick={() => onClickMovie(recipe.key)}>
+              <div className="imageContainer" onClick={() => onClickRecipe(recipe.key)}>
                 <img src={recipe.thumb} alt="poster" className="slide-img" />
                 <div className="imgTitle">{recipe.title}</div>
               </div>
