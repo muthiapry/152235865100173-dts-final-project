@@ -115,7 +115,7 @@ const Navbar = () => {
               onKeyPress={(ev) => {
                 if (ev.key === "Enter") {
                   ev.preventDefault();
-                  if (ev.target.value != "") {
+                  if (ev.target.value !== "") {
                     console.log(`Lagi cari ${ev.target.value}`);
                     onSearch(ev.target.value);
                   }

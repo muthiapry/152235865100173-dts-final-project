@@ -20,7 +20,7 @@ const Results = ({ keyword }) => {
 
   const [recipes, setRecipes] = useState([]);
 
-  useEffect(() => {
+  useEffect((keyword) => {
     const fetchRecipe = async () => {
       try {
         const fetchedRecipes = await masakan.get(`api/search/?q=${keyword}`);
