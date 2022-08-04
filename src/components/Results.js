@@ -10,6 +10,8 @@ import Typography from "@mui/material/Typography";
 import * as React from "react";
 
 const Results = ({ keyword }) => {
+  const [recipes, setRecipes] = useState([]);
+
   console.log(keyword);
   let navigate = useNavigate();
 
@@ -18,9 +20,7 @@ const Results = ({ keyword }) => {
     window.scrollTo(0, 0);
   };
 
-  const [recipes, setRecipes] = useState([]);
-
-  useEffect((keyword) => {
+  useEffect(() => {
     const fetchRecipe = async () => {
       try {
         const fetchedRecipes = await masakan.get(`api/search/?q=${keyword}`);
